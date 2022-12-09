@@ -1,0 +1,66 @@
+package nombresrand;
+
+import java.util.Queue;
+
+/**
+ *
+ * @author Ari
+ */
+public class agregarDatos {
+
+    private String nombreCaja;
+    private Queue<String> Nombres;
+
+    public agregarDatos() {
+
+    }
+
+    public agregarDatos(String nombreCaja, Queue<String> Nombres) {
+        this.nombreCaja = nombreCaja;
+        this.Nombres = Nombres;
+    }
+
+    public String getNombreCaja() {
+        return nombreCaja;
+    }
+
+    public void setNombreCaja(String nombreCaja) {
+        this.nombreCaja = nombreCaja;
+    }
+
+    public Queue<String> getNombres() {
+        return Nombres;
+    }
+
+    public void setNombres(Queue<String> Nombres) {
+        this.Nombres = Nombres;
+    }
+
+    public String personasVertical() {
+        String nomb = "";
+        for (String cola : Nombres) {
+            nomb += "\t" + cola + "\n";
+        }
+        return nomb;
+    }
+
+    public String toString() {
+
+        return ("::::::::::::::::::::::::::" + "\n" + "\t" + nombreCaja + "\n"+ "__________________________" + "\n" + Nombres.size() + " "
+                + "Nombre(s): " + "\n " + personasVertical() + "\n" + "Primero en atender: "
+                + primeroCaja() + "\n" + "Último en atender: " + ultimoCaja() + "\n" + "__________________________");
+    }
+
+    private String primeroCaja() {
+        return Nombres.peek();
+    }
+
+    private String ultimoCaja() {
+        String[] ultimo = new String[Nombres.size()];
+
+        ultimo = Nombres.toArray(ultimo);
+
+        return ultimo[Nombres.size() - 1];
+    }
+}
+
