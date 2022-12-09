@@ -1,0 +1,92 @@
+package nombresrand;
+/*
+ * ITESS-TICS
+ * nombresRand
+ * Agosto-Diciembre 2022
+ * TI-301
+ * Desc: Representacion de una lista de espera
+ */
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Stack;
+
+/**
+ *
+ * @author Ari
+ */
+public class NombresRand {
+
+    public static void main(String[] args) {
+        ArrayList<String> nombres = NombresIngresados();
+        Stack<agregarDatos> cajas = llenarPila(nombres);
+        System.out.println(nombres);
+  
+        for (agregarDatos c : cajas) {
+            System.out.println(c.toString());
+        }
+    }
+
+    public static ArrayList NombresIngresados() {
+
+        ArrayList<String> nom = new ArrayList();
+        nom.add("Adrian");
+        nom.add("Paola");
+        nom.add("Edgar");
+        nom.add("Michelle");
+        nom.add("Alan");
+        nom.add("Laurin");
+        nom.add("Ricardo");
+        nom.add("Nicolas");
+        nom.add("Sergio");
+        nom.add("Diego");
+        nom.add("Raul");
+        nom.add("Yatziri");
+        nom.add("Cecilia");
+        nom.add("Brisa");
+        nom.add("Diana");
+        nom.add("Karem");
+        nom.add("Alonso");
+        nom.add("Santiago");
+        nom.add("Angel");
+        nom.add("Violeta");
+        nom.add("Jaume");
+        nom.add("Osvaldo");
+        nom.add("Sara");
+        nom.add("Daniel");
+        nom.add("Jairo");
+        nom.add("Martin");
+        nom.add("Ulises");
+        nom.add("Erick");
+        nom.add("Carlos");
+        nom.add("Mariana");
+    
+        return nom;
+    }
+
+    public static String consultarNom(ArrayList<String> Nom) {
+        double aleatorio = Math.random() * ((30 - 1) + 1);
+
+        return Nom.get((int) (aleatorio));
+    }
+
+    public static Stack llenarPila(ArrayList<String> Nom) {
+        Stack<agregarDatos> cajasUtilizar = new Stack<>();
+        for (int i = 0; i <= 6; i++) {
+            cajasUtilizar.push(new agregarDatos("Caja " + i + ":", llenarCola(Nom)));
+        }
+        return cajasUtilizar;
+    }
+
+    private static Queue<String> llenarCola(ArrayList<String> Nom) {
+        Queue<String> colaNombres = new PriorityQueue<>();
+        for (int i = 0; i <= numAleatorio(); i++) {
+            colaNombres.offer(consultarNom(Nom));
+        }
+        return colaNombres;
+    }
+
+    public static int numAleatorio() {
+        return (int) (Math.random() * ((30 - 1) + 1));
+    }
+}
